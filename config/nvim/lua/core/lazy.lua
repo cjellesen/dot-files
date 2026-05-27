@@ -19,7 +19,7 @@ require("lazy").setup({
     require("plugins.oil"),
     require("plugins.blink"),
     require("plugins.blink_pairs"),
-    require("plugins.roslyn"),
     require("plugins.fzf-lua"),
     require("plugins.conform"),
+    require("plugins.nvim-lspconfig"),
 })

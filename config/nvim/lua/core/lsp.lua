@@ -1,4 +1,4 @@
-vim.lsp.config.roslyn = {
+vim.lsp.config.roslyn_ls = {
     cmd = {
         "roslyn-language-server",
         "--logLevel=Information",
@@ -43,12 +43,12 @@ vim.lsp.enable({
     "pyright",
     "ruff",
     "gopls",
-    "roslyn",
+    "roslyn_ls",
     "yamlls"
 })
 
 vim.diagnostic.config({
-    virtual_text = false, 
+    virtual_text = false,
     virtual_lines = true,
     underline = true,
     update_in_insert = false,
