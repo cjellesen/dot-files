@@ -20,6 +20,9 @@ end
 
 -- Example special workspace (scratchpad)
 -- Example special workspace (scratchpad)
+hl.bind(mainMod .. " + F4", hl.dsp.window.close())
+hl.bind(mainMod .. " + V", hl.dsp.window.float())
+
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
@@ -65,7 +68,5 @@ hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("uwsm app -- " .. terminal .. 
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("uwsm app -- " .. terminal .. " " .. processManager))
 
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd("uwsm app -- " .. terminal .. " " .. resourceManager))
-
-hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("killactive"))
 
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("uwsm stop"))
