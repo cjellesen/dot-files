@@ -48,68 +48,50 @@ I have yet to modernize my Neovim setup. I am planning to move from the Jetbrain
 For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a.
 
 # DotNet
-Below is a small section of useful info for writing code in C# on Linux.
+As a part of the ansible playbook install process the "dotnet tool" CLI is installed, and a number of tools are subsequently install as global tools to the system.
 
-## Getting an LSP
-Recently found that the "roslyn-language-server" has been released as a dotnet tool:
+Thos tools are as follows:
+    - Roslyn Language Server
+    - Entity Framework Core
+    - Microsoft Artifacts CredentialProvider
 
-    - https://www.nuget.org/packages/roslyn-language-server/
+In order to make the tools callable ensure that the "dotnet tool" install directory has been added to the "$PATH" variable. The PATH is already configured in the "./config/bash_profile" so either copy the relevant lines yourself, or copy it to your $HOME directory and rename it to '.bash_profile'.
 
-In order to install the tool run the command:
+## Roslyn Language Server - Integration with Neovim
+The Neovim setup in this repository should work with with Roslyn. If there are any issues make sure the correct PATH for the dotnet tool directory is set in the .bash_profile. It should also be noted that the Neovim setup currently expects the language server to be called using the command "roslyn-language-server". If this is not the case it can be fixed by creating a symlink of that name with the name of Roslyn tool executable from the dotnet tool installation.
 
-    - dotnet tool install --global roslyn-language-server --prerelease
-
-If the "dotnet tool" has been added to the "$PATH" variable then neovim should be able to call it without having to do more.
-
-The following is a description of how to get the language server before the introduction of it to the dotnet tool ecosystem.
-
-Downloading the LanguageServer to provide linting for C# development can be abit of a pain. What it boils down to is finding the NuGet package Microsoft.CodeAnalysis.LanguageServer and downloading it. The best way to do this has, in my experience, been to browse the public the public AzureFeed for Microsoft. Some of the places I've had success with are:
-
-    - https://dev.azure.com/azure-public/vside
-    - https://dev.azure.com/dnceng/public/
-
-Once a feed with the package "Microsoft.CodeAnalysis.LanguageServer" has been located download the NuGet file for the appropriate architecture, e.g. "linux-x64".
-
-NuGet files are essentially just .zip files so change the extension by renaming it from the ".nupkg" extension to ".zip" and unpack it.
-
-Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/\<architecture\>/" folder and make it executable using chmod. Once this is done test it can execute.
-
-For the fancy folks, create a folder to store content of the of "./content/LanguageServer/\<architecture\>/" in and in the "/usr/local/bin/" folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf \<PATH TO EXECUTABLE\> /usr/local/bin/roslyn-language-server". The language server can now be executed using "roslyn-language-server".
-
-As a note, the Neovim setup currently expects the language server to be called using the command "roslyn-language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects. Once this is done the workflow in Neovim for getting linting outside the current file is:
+Once the Neovim integration with the Roslyn LSP is done the workflow in Neovim for getting linting outside the current file is:
 
     - On intialization of Neovim set the compiler to dotnet using ":compile dotnet"
-
     - The build chain can now be intialized by running ":make" which builds and adds its output to the quick fix list
-
     - The result of the build can be in the quick fix list using the ":copen" command
+
+It is possible to force Roslyn to continously scan the entire solution by edition the Neovim configuration:
+
+    - dotnet_analyzer_diagnostics_scope = "openFiles",
+
+Do note that this comes with a significant processing overhead for larger solutions.
 
 For documentaion about the ":make" in relation to dotnet see: "https://neovim.io/doc/user/quickfix.html#compiler-dotnet". One can add the options described in the documentation to Neovim as global defaults as done in the "./config/nvim/lua/config/globals.lua" where the following is set:
 
     - vim.g.dotnet_errors_only = true
     - vim.g.dotnet_show_project_file = false
 
-## Connecting to a private NuGet feed
-In order to connect to private NuGet feeds from Azure Artifacts, the Azure Artifacts Credential Provider must be installed. The install guide can be found at:
+## Microsoft Artifacts CredentialProvider - Connecting to a private NuGet feed
+The tool is installed via the ansible playbook, so once the playbook is finished, running the command:
+    - "dotnet restore --interactive"
 
-    - https://github.com/microsoft/artifacts-credprovider
-
-It can either be installed via the dotnet tool command:
-
-    - dotnet tool install --global  Microsoft.Artifacts.CredentialProvider.NuGet.Tool
-
-Or it can be installed manually by:
-
-    - Download the latest release from "https://github.com/Microsoft/artifacts-credprovider/releases" for the desired architecture
-
-    - Unpack the content of the ".tar.gz" file
-
-    - If not already present, create a "plugins" directory in the "$HOME/.nuget" folder
-
-    - Copy the folder "netcore" from the unpacked ".tar.gz" file into the newly created "$HOME/.nuget/plugins/" directory
-
-You should now be able to run "dotnet restore --interactive" and it will open a new tab for authentication in the browser.
+should open a new tab for authentication in the browser.
 Alternatively install the credential tool through the "dotnet tool" command. Remember to ensure the "$HOME/.dotnet/tools" folder is added to "$PATH" for this to work.
 
 # Python
-I have not yet set up my Python development environment and might migrate to uv for managing packages and virtual environments.
+As a part of the ansible playbook install process the "uv" CLI tool is installed, and a number of tools are subsequently installed.
+
+Those tools are as follows:
+    - Ruff (Linter and Formatter)
+    - Pyrefly (Language Server Protocol)
+
+In order to make the tools callable ensure that the "uv" tool install directory has been added to the "$PATH" variable. The PATH is already configured in the "./config/bash_profile" so either copy the relevant lines yourself, or copy it to your $HOME directory and rename it to '.bash_profile'.
+
+I have not yet configured Neovim to use these tools optimally so this is on my TODO list.
+

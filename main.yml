@@ -19,6 +19,7 @@
      - kitty
      - neovim
      - docker
+     - kubernetes
      - go
      - dotnet
      - python

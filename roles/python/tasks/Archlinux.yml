@@ -7,9 +7,7 @@
   become: true
 
 - name: "Python | Installing the Ruff package (Linter and code formatter)"
-  community.general.pacman:
-    name: ruff
-    update_cache: true
-    state: present
-  become: true
+  command: uv tool install ruff
 
+- name: "Python | Installing the Pyrefly LSP"
+  command: uv tool install pyrefly
