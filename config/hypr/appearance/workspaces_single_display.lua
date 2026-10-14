@@ -95,5 +95,7 @@ hl.window_rule({
 hl.window_rule({
     name = "Steam Apps",
     workspace = "0 silent",
-    match = { class = "^(World of Warcraft)$" }
+    match = { class = "World of Warcraft" },
+    fullscreen = true,
+    maximize = true
 })
