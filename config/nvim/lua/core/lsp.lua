@@ -40,7 +40,7 @@ vim.lsp.config.roslyn_ls = {
 
 vim.lsp.enable({
     "lua_ls",
-    "pyright",
+    "pyrefly",
     "ruff",
     "gopls",
     "roslyn_ls",
