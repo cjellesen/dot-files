@@ -1,49 +1,9 @@
-vim.lsp.config.roslyn_ls = {
-    cmd = {
-        "roslyn-language-server",
-        "--logLevel=Information",
-        "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.log.get_filename()),
-        "--stdio",
-    },
-    filetypes = { "cs" },
-    root_markers = {
-        ".csproj",
-        ".sln",
-        ".git",
-    },
-    settings = {
-        ["csharp|background_analysis"] = {
-            dotnet_analyzer_diagnostics_scope = "openFiles",
-            dotnet_compiler_diagnostics_scope = "fullSolution",
-        }
-    },
-    capabilities = {
-        textDocument = {
-            diagnostic = {
-                dynamicRegistration = true,
-            }
-        },
-        workspace = {
-            diagnostic = {
-                refreshSupport = true
-            }
-        },
-    },
-    on_attach = function(client)
-        client.server_capabilities.diagnosticProvider = {
-            interFileDependencies = true,
-            workspaceDiagnostics = true,
-            workDoneProgress = true
-        }
-    end
-}
-
 vim.lsp.enable({
+    "roslyn_ls",
     "lua_ls",
     "pyrefly",
     "ruff",
     "gopls",
-    "roslyn_ls",
     "yamlls"
 })
 

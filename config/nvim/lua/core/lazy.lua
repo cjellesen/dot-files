@@ -21,5 +21,4 @@ require("lazy").setup({
     require("plugins.blink_pairs"),
     require("plugins.fzf-lua"),
     require("plugins.conform"),
-    require("plugins.nvim-lspconfig"),
 })
