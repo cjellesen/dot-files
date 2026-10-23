@@ -19,6 +19,7 @@ return {
             lua = { "stylua" },
             python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
             go = { "gofumpt", "golines", "goimports_reviser" },
+            cs = { "csharpier" },
             ["_"] = { "trim_whitespace" },
         },
         -- Set default options
