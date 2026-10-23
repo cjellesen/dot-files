@@ -12,16 +12,18 @@
         - always
 
   roles:
-     - fonts
      - hyprland
+     - bash
+     - go
+     - dotnet
+     - python
+     - javascript
+     - fonts
      - cli-tools
      - tui-apps
      - kitty
      - neovim
      - docker
      - kubernetes
-     - go
-     - dotnet
-     - python
      - bitwarden
      - firefox

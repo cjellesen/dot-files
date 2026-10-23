@@ -4,142 +4,120 @@
   community.general.pacman:
     name: linux-headers
     state: present
-  become: true
 
   # https://gitlab.com/kernel-firmware/linux-firmware
 - name: "Hyprland | Installing Linux firmware package (Firmware outside linux kernel)"
   community.general.pacman:
     name: linux-firmware
     state: present
-  become: true
 
 - name: "Hyprland | Install base-devel (Build tools)"
   community.general.pacman:
     name: base-devel
     update_cache: true
     state: present
-  become: true
 
 - name: "Hyprland | Installing hyprland (Desktop environment)"
   community.general.pacman:
     name: hyprland
     update_cache: true
     state: present
-  become: true
 
 - name: "Hyprland | Installing uwsm (Wayland session manager)"
   community.general.pacman:
     name: uwsm
     update_cache: true
     state: present
-  become: true
 
 - name: "Hyprland | Installing libnewt (Uwsm dependency)"
   community.general.pacman:
     name: libnewt
     update_cache: true
     state: present
-  become: true
 
 - name: "Hyprland | Installing nvidia-dkms (Nvidia drivers)"
   community.general.pacman:
     name: nvidia-dkms
     state: present
-  become: true
 
 - name: "Hyprland | Installing nvidia-utils (Nvidia utilities package)"
   community.general.pacman:
     name: nvidia-utils
     state: present
-  become: true
 
 # NOTE: Remember to enable 'multilib' in /etc/pacman.conf
 - name: "Hyprland | Installing lib32-nvidia-utils (Nvidia 32 bit utilities package)"
   community.general.pacman:
     name: lib32-nvidia-utils
     state: present
-  become: true
 
 - name: "Hyprland | Installing the egl-wayland (EGL API for Wayland protocol)"
   community.general.pacman:
     name: egl-wayland
     state: present
-  become: true
 
 - name: "Hyprland | Installing the XDG Desktop Portal"
   community.general.pacman:
     name: xdg-desktop-portal-hyprland
     state: present
-  become: true
 
 - name: "Hyprland | Installing dunst (Notification daemon)"
   community.general.pacman:
     name: dunst
     state: present
-  become: true
 
 - name: "Hyprland | Installing PipeWire (Audio)"
   community.general.pacman:
     name: pipewire
     state: present
-  become: true
 
 - name: "Hyprland | Installing PipeWire Pulse (Audio)"
   community.general.pacman:
     name: pipewire-pulse
     state: present
-  become: true
 
 - name: "Hyprland | Installing PipeWire ALSA (Audio)"
   community.general.pacman:
     name: pipewire-alsa
     state: present
-  become: true
 
 - name: "Hyprland | Installing WirePlumber (Audio)"
   community.general.pacman:
     name: wireplumber
     state: present
-  become: true
 
 - name: "Hyprland | Installing hyprpolkitagent (Polkit authentication daemon)"
   community.general.pacman:
     name: hyprpolkitagent
     state: present
-  become: true
 
   # https://github.com/hyprwm/hyprpaper
 - name: "Hyprland | Installing Hyprpaper (Wallpaper manager)"
   community.general.pacman:
     name: hyprpaper
     state: present
-  become: true
 
   # https://github.com/hyprwm/hyprlock
 - name: "Hyprland | Installing Hyprlock (Screen locker)"
   community.general.pacman:
     name: hyprlock
     state: present
-  become: true
 
   # https://github.com/emersion/slurp
 - name: "Hyprland | Installing slurp (Region selector for Wayland)"
   community.general.pacman:
     name: slurp
     state: present
-  become: true
 
   # https://gitlab.freedesktop.org/emersion/grim
 - name: "Hyprland | Installing grim (Screen grabber for Wayland)"
   community.general.pacman:
     name: grim
     state: present
-  become: true
 
   # https://github.com/jtheoof/swappy
 - name: "Hyprland | Installing swappy (Snapshot and editor tool)"
   community.general.pacman:
     name: swappy
     state: present
-  become: true
 

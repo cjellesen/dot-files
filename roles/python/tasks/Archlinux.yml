@@ -4,7 +4,6 @@
     name: uv
     update_cache: true
     state: present
-  become: true
 
 - name: "Python | Installing the Ruff package (Linter and code formatter)"
   command: uv tool install ruff

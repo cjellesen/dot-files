@@ -1,0 +1,16 @@
+---
+- name: "Bash | Setting up .bash_profile"
+  ansible.builtin.copy:
+    src: ../../../config/bash_profile
+    dest: $HOME/.bash_profile
+    owner: casj
+    group: casj
+    mode: '0644'
+
+- name: "Bash | Setting up .bashrc"
+  ansible.builtin.copy:
+    src: ../../../config/bashrc
+    dest: $HOME/.bashrc
+    owner: casj
+    group: casj
+    mode: '0644'

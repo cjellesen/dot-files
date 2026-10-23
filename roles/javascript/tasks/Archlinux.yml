@@ -1,0 +1,12 @@
+---
+- name: "JavaScript | Installing nvm"
+  community.general.pacman:
+    name: nvm
+    update_cache: true
+    state: present
+
+- name: "JavaScript | Installing TypeScript"
+  command: nvm install node
+
+# - name: "JavaScript | Installing TypeScript"
+#   command: npm install -g typescript --save-dev

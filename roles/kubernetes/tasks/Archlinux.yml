@@ -5,7 +5,6 @@
     name: kubectl
     update_cache: true
     state: present
-  become: true
 
   # https://github.com/kubernetes/kubectl
 - name: "Helm | Installing helm"
@@ -13,4 +12,3 @@
     name: helm
     update_cache: true
     state: present
-  become: true

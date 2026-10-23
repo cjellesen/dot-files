@@ -62,24 +62,19 @@
   ansible.builtin.file:
     path: /opt/netcoredbg
     state: absent
-  become: true
 
 - name: "Dotnet | Unpacking Netcoredbg"
   ansible.builtin.unarchive:
     src: /tmp/netcoredbg-linux-amd64.tar.gz
     dest: /opt
-  become: true
 
 - name: "Dotnet | Removing downloaded netcoredbg file from Github"
   ansible.builtin.file:
     path: /tmp/netcoredbg-linux-amd64.tar.gz
     state: absent
-  become: true
 
 - name: "Dotnet | Creating a symbolic link for Netcoredbg"
   ansible.builtin.file:
     src: /opt/netcoredbg/netcoredbg
     dest: /usr/bin/netcoredbg
     state: link
-  become: true
-
