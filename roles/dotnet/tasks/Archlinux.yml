@@ -37,4 +37,7 @@
   command: dotnet tool install --global roslyn-language-server --prerelease
 
 - name: "Dotnet | Installing the Microsoft Credential Provider (For Azure Artifacts)"
-  command: dotnet tool install --global  Microsoft.Artifacts.CredentialProvider.NuGet.Tool
+  command: dotnet tool install --global Microsoft.Artifacts.CredentialProvider.NuGet.Tool
+
+- name: "Dotnet | Installing csharpier"
+  command: dotnet tool install --global csharpier
